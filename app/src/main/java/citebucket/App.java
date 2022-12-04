@@ -3,29 +3,40 @@
  */
 package citebucket;
 
+import java.io.File;
+
 import citebucket.frontend.Splash;
 import citebucket.util.AppState;
 
 public class App {
     public static App INSTANCE = new App();
     AppState state = AppState.SPLASH;
-    
+    boolean running = true;
 
     public static void main(String[] args) {
     }
 
     public App() {
-        switch (state) {
-            case SPLASH:
-                String path = Splash.showSplash();
-                state = AppState.BUCKET;
-                break;
-        
-            case BUCKET:
-                //load and create the bucket and then pass to the frontend
+        while (running) {
+            switch (state) {
+                case SPLASH:
+                    String path = Splash.showSplash();
+                    if(!new File(path).exists()){
+                        //Error: not a path that exists also no worries: after Button press it just disposes itself
+                        continue;
+                    }
 
-                break;
+                    state = AppState.BUCKET;
+                    break;
+            
+                case BUCKET:
+                    //load and create the bucket and then pass to the frontend
+
+                    break;
+            }            
         }
+
+
 
     }
 }

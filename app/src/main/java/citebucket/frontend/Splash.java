@@ -14,12 +14,11 @@ import citebucket.App;
 //Start screen, for creating buckets and such
 public class Splash {
     
-    
     public static String showSplash() {
         String path = "";
         JFrame scr = new JFrame("Welcome to Citebucket");
 
-        scr.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        scr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         scr.setLayout(new BoxLayout(scr.getContentPane(), 0));
 
